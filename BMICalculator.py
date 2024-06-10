@@ -1,21 +1,23 @@
-# function to use all other functions
+# function to call all other functions
 def main():
-    height, weight = getMeasurements()
-    bmi = calculateBMI(height, weight)
+    bmi = calculateBMI()
     printBMI(bmi)
 
 # take user input for measurements
-def getMeasurements():
+def getMeasurements(prompt = 'Enter number: '):
     while True:
+        num = input(prompt)
         try:
-            height = float(input('What is your height in inches?\n'))
-            weight = float(input('What is your weight in pounds?\n'))
-            return height, weight
+            num = float(num)
+            return num
         except ValueError:
             print('Invalid input. Please enter a valid number.')
 
 # formula for BMI
-def calculateBMI(height, weight):
+def calculateBMI():
+    height = float(getMeasurements('What is your height in inches?\n'))
+    weight = float(getMeasurements('What is your weight in pounds?\n'))
+    
     bmi = (weight / (height ** 2)) * 703
     return bmi
 
@@ -44,5 +46,5 @@ def printBMI(bmi):
     elif bmi > 40:
         print('You have class III obesity.')
 
-# run program
+# call main
 main()
