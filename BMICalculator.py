@@ -3,8 +3,8 @@ def main():
     bmi = calculateBMI()
     printBMI(bmi)
 
-# take user input for measurements
-def getMeasurements(prompt = 'Enter number: '):
+# generic function to handle exceptions
+def getNum(prompt = 'Enter number: '):
     while True:
         num = input(prompt)
         try:
@@ -13,11 +13,11 @@ def getMeasurements(prompt = 'Enter number: '):
         except ValueError:
             print('Invalid input. Please enter a valid number.')
 
-# formula for BMI
+# take user input for values
 def calculateBMI():
-    height = float(getMeasurements('What is your height in inches?\n'))
-    weight = float(getMeasurements('What is your weight in pounds?\n'))
-    
+    height = float(getNum('What is your height in inches?\n'))
+    weight = float(getNum('What is your weight in pounds?\n'))
+
     bmi = (weight / (height ** 2)) * 703
     return bmi
 
